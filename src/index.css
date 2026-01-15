@@ -21,3 +21,6 @@ body {
 .font-playfair {
   font-family: 'Playfair Display SC', serif;
 }
+html, body {
+  overflow-x: hidden;
+}
