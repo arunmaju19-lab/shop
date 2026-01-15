@@ -101,7 +101,7 @@ const recentSearched = [
 ];
 
 return (
-    <div className=" text-white py-20">
+    <div className=" text-white py-20  ">
 
       {/* ===== HEADING ===== */}
       <div className="text-center mb-14 ">
@@ -114,80 +114,118 @@ return (
       </div>
 
       {/* ===== CARDS ===== */}
-      <div className="flex justify-center gap-10 px-20">
-        {cards.map((card) => (
-          <div key={card.id} className="relative w-[260px]">
-            {/* Image */}
-            <img
-              src={card.img}
-              alt={card.title}
-              className="w-full h-[340px] object-cover rounded-lg"
-            />
+      <div
+  className="
+    grid grid-cols-2 gap-6 px-4
+    md:flex md:justify-center md:gap-10 md:px-20
+  "
+>
+  {cards.map((card) => (
+    <div key={card.id} className="relative w-full md:w-[260px]">
+      
+      {/* Image */}
+      <img
+        src={card.img}
+        alt={card.title}
+        className="w-full h-[220px] md:h-[340px] object-cover rounded-lg"
+      />
 
-            {/* Text overlay */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
-              <h3 className="text-lg font-semibold">
-                {card.title}
-              </h3>
-              <p className="text-lime-400 text-sm">
-                {card.subtitle}
-              </p>
-            </div>
-          </div>
-        ))}
+      {/* Text overlay */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center">
+        <h3 className="text-sm md:text-lg font-semibold">
+          {card.title}
+        </h3>
+        <p className="text-lime-400 text-xs md:text-sm">
+          {card.subtitle}
+        </p>
+      </div>
+    </div>
+  ))}
+</div>
+
+ {/* NEW ARRIVALS BAR */}
+      <div className="mt-6 px-4 md:px-20 max-w-7xl w-full mx-auto">
+  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-0 px-2 md:px-6 py-4">
+
+    {/* LEFT TEXT */}
+    <div className="flex-1">
+      <div className="flex items-start justify-between md:block">
+        <h2 className="text-xl md:text-2xl font-playfair">
+          New Arrivals
+        </h2>
+
+        {/* SEE ALL – mobile right top */}
+        <button className="text-sm text-white hover:underline md:hidden">
+          See all
+        </button>
       </div>
 
-      {/* NEW ARRIVALS BAR */}
-      <div className="mt-20 px-20  max-w-7xl w-full mx-auto">
-        <div className="flex justify-between items-center  px-6 py-4">
-          <div>
-            <h2 className="text-2xl font-playfair">New Arrivals</h2>
-            <p className="text-gray-400 text-sm">
-              234 New item added
-            </p>
-          </div>
+      <p className="text-gray-400 text-sm mt-1">
+        234 New item added
+      </p>
+    </div>
 
-          <button className="text-sm text-white hover:underline">
-            See all
-          </button>
-        </div>
-      </div>
-      {/*  PRODUCT CARDS */}
-<div className="mt-10 px-20 mx-auto  max-w-7xl w-full mx-auto  ">
-  <div className="flex gap-8">
+    {/* SEE ALL – desktop */}
+    <button className="hidden md:block text-sm text-white hover:underline">
+      See all
+    </button>
+
+  </div>
+</div>
+
+{/* New arrival cart section */}
+<div className="mt-6 md:mt-10 px-4 md:px-20 max-w-7xl w-full mx-auto">
+  <div
+    className="
+      grid grid-cols-2 gap-4
+      md:flex md:gap-8
+    "
+  >
     {products.map((item) => (
       <div
         key={item.id}
-        className="bg-[#0b0f14] rounded-xl p-4 w-[280px] relative"
+        className="
+          bg-[#0b0f14] rounded-xl p-4
+          w-full md:w-[280px]
+          relative
+        "
       >
-        {/* Heart icon */}
-        <button className="absolute top-4 right-4 border border-gray-500 rounded-full p-2">
-          🤍
+        {/* Heart icon (top) */}
+        <button
+          className="
+            absolute top-4 right-4
+            border border-gray-500
+            rounded-full p-2
+            hover:border-lime-400
+            transition
+          "
+        >
+          <FaHeart className="text-gray-300 hover:text-red-500 text-sm transition" />
         </button>
 
         {/* Product Image */}
         <img
           src={item.img}
           alt={item.name}
-          className="w-full h-[200px] object-contain mb-4"
+          className="w-full h-[160px] md:h-[200px] object-contain mb-4"
         />
 
         {/* Product info */}
         <div className="flex justify-between items-center mb-1">
-          <h3 className="text-md">{item.name}</h3>
+          <h3 className="text-sm md:text-md">{item.name}</h3>
           <span className="text-sm font-semibold">{item.price}</span>
         </div>
 
         <p className="text-xs text-gray-400 mb-4">{item.sku}</p>
 
         {/* Actions */}
-        <div className="flex gap-3">
-          <button className="flex-1 bg-lime-400 text-black text-sm py-2 rounded-lg font-medium hover:cursor-pointer hover:bg-lime-500 transition ">
+        <div className="flex gap-2 md:gap-3">
+          <button className="flex-1 bg-lime-400 text-black text-xs md:text-sm py-2 rounded-lg font-medium hover:bg-lime-500 transition">
             ADD TO CART
           </button>
-          <button className="border border-lime-400 text-lime-400 rounded-lg px-3">
-            ♥
 
+          <button className="border border-lime-400 rounded-lg px-3 flex items-center justify-center">
+            <FaHeart className="text-lime-400 hover:text-red-500 transition" />
           </button>
         </div>
       </div>
@@ -195,43 +233,81 @@ return (
   </div>
 </div>
 
-<div className="max-w-7xl w-full mx-auto h-[350px] rounded-xl 
-  bg-gradient-to-r from-[#5b6400] via-[#1b1f00] to-black
-  flex items-center px-10 mt-15 mx-auto">
- <img
+{/* gold image */}
+<div
+  className="
+    max-w-7xl w-full mx-auto
+    min-h-[400px]
+    rounded-xl
+    bg-gradient-to-r from-[#5b6400] via-[#1b1f00] to-black
+    flex flex-col md:flex-row
+    items-center
+    px-4 md:px-10
+    py-6 md:py-0
+    mt-10
+    gap-6 md:gap-10 
+  "
+>
+  {/* Image */}
+  <img
     src={ring}
     alt="gold"
-    className="w-[380px]"
+    className="w-[240px] md:w-[380px] "
   />
-  <div className="ml-auto text-white max-w-sm mr-96">
-    <h2 className="text-3xl font-serif mb-3">
+
+  {/* Text */}
+  <div className="text-white max-w-sm text-center md:text-left">
+    <h2 className="text-2xl md:text-3xl font-serif mb-3">
       The Best Gold Ever
     </h2>
-     <p className="text-sm text-gray-300 mb-6 ">
+
+    <p className="text-sm text-gray-300 mb-6 ">
       People thinking about the future why gold make high
       value here is the answer for all about
     </p>
-      <button className="border border-lime-400 px-12 py-2 rounded-md text-lime-400 hover:bg-lime-400
-       hover:text-black transition hover:cursor-pointer mt-10 ">
+
+    <button
+      className="
+        border border-lime-400
+        px-10 md:px-12
+        py-2
+        rounded-md
+        text-lime-400
+        hover:bg-lime-400 hover:text-black
+        transition
+        cursor-pointer md:mt-18 md:ml-96
+      "
+    >
       Explore
     </button>
-    </div>
   </div>
+</div>
+
 
 <div className="flex flex-col justify-center items-center mt-12">
   <h2 className="text-3xl font-serif">Top Demanded Items</h2>
   <p className="ml-4 text-sm text-gray-300 mt-2">234 New Items added</p>
 
-  {/* ===== TOP DEMANDED GRID ===== */}
-<div className="mt-6 px-20">
-  <div className="grid grid-cols-4 gap-18">
+ 
+{/* ===== TOP DEMANDED GRID ===== */}
+<div className="mt-6 px-4 md:px-20">
+  <div
+    className="
+      grid grid-cols-2 gap-8
+      sm:grid-cols-2
+      md:grid-cols-4 md:gap-8
+    "
+  >
     {topDemanded.map((item) => (
       <div
         key={item.id}
-        className="relative rounded-2xl p-6
-        bg-gradient-to-b from-[#0f1200] to-black
-        border border-lime-500/40 hover:scale-105
-         hover:cursor-pointer"
+        className="
+          relative rounded-2xl p-4 md:p-16
+          bg-gradient-to-b from-[#0f1200] to-black
+          border border-lime-500/40
+          hover:scale-105 hover:cursor-pointer
+          transition
+        "
       >
         {/* Glow */}
         <div className="absolute inset-0 bg-lime-500/10 blur-2xl -z-10 rounded-2xl"></div>
@@ -240,24 +316,24 @@ return (
         <img
           src={item.img}
           alt={item.name}
-          className="h-32 mx-auto mb-6 object-contain w-[280px]"
+          className="h-28 md:h-32 mx-auto mb-4 object-contain w-full"
         />
 
         {/* Text */}
-        <h3 className="text-sm text-white mb-1">
+        <h3 className="text-xs md:text-sm text-white mb-1 text-center md:text-left">
           {item.name}
         </h3>
 
-        <p className="text-xs text-gray-400 mb-4">
+        <p className="text-[10px] md:text-xs text-gray-400 mb-3 text-center md:text-left">
           {item.sku}
         </p>
 
         {/* Price */}
-        <div className="flex gap-3 items-center">
-          <span className="text-white font-semibold">
+        <div className="flex gap-2 items-center justify-center md:justify-start">
+          <span className="text-white font-semibold text-sm">
             {item.price}
           </span>
-          <span className="text-gray-500 line-through text-sm">
+          <span className="text-gray-500 line-through text-xs">
             {item.old}
           </span>
         </div>
@@ -266,52 +342,85 @@ return (
   </div>
 </div>
 </div>
-      {/* ===== MAN IMAGE ===== */}
-<div className="flex justify-center mt-15">
-  <img src={man} alt="man"  className="w-[1250px] h-[413px] " />
+     {/* ===== MAN IMAGE ===== */}
+<div className="flex justify-center mt-6 md:mt-15 px-4 md:px-0">
+  <img
+    src={man}
+    alt="man"
+    className="
+      w-full
+      max-w-7xl
+      h-auto
+      object-cover
+    "
+  />
 </div>
 
+
       {/* ===== RECENT SEARCHED ===== */}
-<div>
-  <h1 className="flex font-serif text-3xl ml-17 mt-22">Recent Searched</h1>
-  <p className="ml-17 mt-2">234 items added</p>
+<div className="mt-6 md:mt-15 px-4 md:px-20 ml-0 md:ml-12">
+  <h1 className="font-serif text-2xl md:text-3xl text-left">
+    Recent Searched
+  </h1>
+  <p className="text-sm text-gray-400 mt-1 text-left">
+    234 items added
+  </p>
 </div>
-<div className="mt-6 px-20">
-<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-      {recentSearched.map((item) => (
+
+<div className="mt-6 px-4 md:px-20">
+  <div
+    className="
+      grid grid-cols-2 gap-4
+      sm:grid-cols-2
+      md:grid-cols-4 md:gap-6
+    "
+  >
+    {recentSearched.map((item) => (
       <div
         key={item.id}
-        className="relative rounded-2xl p-6
-        bg-gradient-to-b from-[#0f1200] to-black
-        border border-lime-500/40 hover:scale-105
-         hover:cursor-pointer"
+        className="
+          relative rounded-2xl p-4 md:p-6
+          bg-gradient-to-b from-[#0f1200] to-black
+          border border-lime-500/40
+          hover:scale-105 hover:cursor-pointer
+          transition
+        "
       >
         {/* ❤️ Heart Icon */}
-        <button className="absolute top-6 right-6 z-10">
-          <FaHeart className="text-gray-300 hover:text-red-500 text-lg transition" />
+        <button className="absolute top-4 right-4 z-10">
+          <FaHeart className="text-gray-300 hover:text-red-500 text-base md:text-lg transition" />
         </button>
 
         {/* Product Image */}
         <img
           src={item.img}
           alt={item.name}
-          className="w-full h-40 object-contain mb-3"
+          className="w-full h-32 md:h-40 object-contain mb-3"
         />
 
         {/* Product Info */}
-        <h3 className=" flex font-medium justify-center items-center">{item.name}</h3>
-        <p className=" flex text-sm text-gray-500 justify-center items-center mt-2">{item.sku}</p>
+        <h3 className="text-sm font-medium text-center">
+          {item.name}
+        </h3>
 
-        <div className="mt-8">
-          <span className="font-semibold text-white ml-16">₹{item.price}</span>
-          <span className="line-through text-gray-400 ml-2">
+        <p className="text-xs text-gray-500 text-center mt-1">
+          {item.sku}
+        </p>
+
+        {/* Price */}
+        <div className="mt-4 flex justify-center items-center gap-2">
+          <span className="font-semibold text-white text-sm">
+            ₹{item.price}
+          </span>
+          <span className="line-through text-gray-400 text-xs">
             ₹{item.old}
           </span>
         </div>
       </div>
     ))}
- </div>
+  </div>
 </div>
+
 
     </div>
   );
