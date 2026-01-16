@@ -22,6 +22,8 @@ import silver2 from "./assets/secnd/silver2.png";
 import silver3 from "./assets/secnd/silver3.png";
 import silver4 from "./assets/secnd/silver4.png";   
 import { FaHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 
 function Secondpage() {
   const cards = [
@@ -299,46 +301,50 @@ return (
     "
   >
     {topDemanded.map((item) => (
-      <div
-        key={item.id}
-        className="
-          relative rounded-2xl p-4 md:p-16
-          bg-gradient-to-b from-[#0f1200] to-black
-          border border-lime-500/40
-          hover:scale-105 hover:cursor-pointer
-          transition
-        "
-      >
-        {/* Glow */}
-        <div className="absolute inset-0 bg-lime-500/10 blur-2xl -z-10 rounded-2xl"></div>
+  <Link
+    key={item.id}
+    to={`/product/${item.id}`}
+    state={item}
+    className="block"
+  >
+    <div
+      className="
+        relative rounded-2xl p-4 md:p-16
+        bg-gradient-to-b from-[#0f1200] to-black
+        border border-lime-500/40
+        hover:scale-105 hover:cursor-pointer
+        transition
+      "
+    >
+      {/* Glow */}
+      <div className="absolute inset-0 bg-lime-500/10 blur-2xl -z-10 rounded-2xl"></div>
 
-        {/* Image */}
-        <img
-          src={item.img}
-          alt={item.name}
-          className="h-28 md:h-32 mx-auto mb-4 object-contain w-full"
-        />
+      <img
+        src={item.img}
+        alt={item.name}
+        className="h-28 md:h-32 mx-auto mb-4 object-contain w-full"
+      />
 
-        {/* Text */}
-        <h3 className="text-xs md:text-sm text-white mb-1 text-center md:text-left">
-          {item.name}
-        </h3>
+      <h3 className="text-xs md:text-sm text-white mb-1">
+        {item.name}
+      </h3>
 
-        <p className="text-[10px] md:text-xs text-gray-400 mb-3 text-center md:text-left">
-          {item.sku}
-        </p>
+      <p className="text-xs text-gray-400 mb-3">
+        {item.sku}
+      </p>
 
-        {/* Price */}
-        <div className="flex gap-2 items-center justify-center md:justify-start">
-          <span className="text-white font-semibold text-sm">
-            {item.price}
-          </span>
-          <span className="text-gray-500 line-through text-xs">
-            {item.old}
-          </span>
-        </div>
+      <div className="flex gap-2">
+        <span className="text-white font-semibold text-sm">
+          ₹{item.price}
+        </span>
+        <span className="line-through text-gray-500 text-xs">
+          ₹{item.old}
+        </span>
       </div>
-    ))}
+    </div>
+  </Link>
+))}
+
   </div>
 </div>
 </div>
@@ -395,7 +401,7 @@ return (
         <img
           src={item.img}
           alt={item.name}
-          className="w-full h-32 md:h-40 object-contain mb-3"
+          className="w-full h-32  md:h-65 object-contain mb-3"
         />
 
         {/* Product Info */}
