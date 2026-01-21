@@ -3,36 +3,40 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./Components/Navbar.jsx";
 import Home from "./Components/Home.jsx";
-import Secondpage from "./Secondpage.jsx";
+import Secondpage from "./Components/Secondpage.jsx";
 import Bottom from "./Components/Bottom.jsx";
 import Banner from "./Components/Banner.jsx";
 import ProductDetail from "./Components/ProductDetail.jsx";
+import Cart from "./Components/Cart.jsx";
+
+import { ProductProvider } from "./Components/context/ProductContext.jsx";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
+    <ProductProvider>
+      <BrowserRouter>
+        <Navbar />
 
-      <Routes>
-        {/* HOME PAGE */}
-        <Route
-          path="/"
-          element={
-            <>
-              <Home />
-              <div className="bg-[#1c1c1c]">
-                <Secondpage />
-                <Banner />
-                <Bottom />
-              </div>
-            </>
-          }
-        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Home />
+                <div className="bg-[#1c1c1c]">
+                  <Secondpage />
+                  <Banner />
+                  <Bottom />
+                </div>
+              </>
+            }
+          />
 
-        {/* PRODUCT DETAIL PAGE */}
-        <Route path="/product/:id" element={<ProductDetail />} />
-      </Routes>
-    </BrowserRouter>
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </BrowserRouter>
+    </ProductProvider>
   );
 }
 

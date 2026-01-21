@@ -22,8 +22,8 @@ function ProductDetail() {
       <div className="grid grid-cols-1 md:grid-cols-2 h-full">
 
         {/* ===== LEFT IMAGE (SINGLE SQUARE IMAGE) ===== */}
-        <div className="flex items-center justify-center bg-black">
-          <div className="w-[360px] h-[360px] bg-[#0b0f14] rounded-xl flex items-center justify-center relative">
+        <div className="flex items-center justify-start ml-24  mb-66 bg-black">
+          <div className="w-[360px] h-[360px] bg-[#0b0f14] rounded-xl flex  justify-start relative border border-gray-700 box-shadow-lg">
 
             {/* Heart icon */}
             <button className="absolute top-4 right-4 text-gray-400 hover:text-red-500">
